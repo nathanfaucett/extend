@@ -1,6 +1,20 @@
 var keys = require("keys");
 
 
+module.exports = extend;
+
+
+function extend(out) {
+    var i = 0,
+        il = arguments.length - 1;
+
+    while (i++ < il) {
+        baseExtend(out, arguments[i]);
+    }
+
+    return out;
+}
+
 function baseExtend(a, b) {
     var objectKeys = keys(b),
         i = -1,
@@ -12,14 +26,3 @@ function baseExtend(a, b) {
         a[key] = b[key];
     }
 }
-
-module.exports = function extend(out) {
-    var i = 0,
-        il = arguments.length - 1;
-
-    while (i++ < il) {
-        baseExtend(out, arguments[i]);
-    }
-
-    return out;
-};
